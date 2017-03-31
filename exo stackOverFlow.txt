@@ -1,0 +1,46 @@
+Nombre de question posées par Jon Skeet
+
+	select COUNT(*) from posts p
+	inner join users u ON u.id=p.ownerUserId
+	where u.DisplayName ='Jon Skeet'
+
+
+
+Nombre de upvotes de l'user Jon Skeet
+
+	select COUNT (UpVotes) as Nb_upvotes , DisplayName nom_utilisateur from Users
+	where DisplayName ='Jon Skeet'GROUP BY displayname
+
+
+Liste des devs intéressés par JS sur grenoble
+
+	select DISTINCT displayName
+	from Posts p
+	JOIN users  u ON u.id = p.owneruserid
+	WHERE p.Tags LIKE '%javascript%' AND u.location LIKE '%Grenoble%'
+
+
+Nombre moyen de commentaire par post
+
+	select avg(commentcount) from posts
+
+
+Les trois tags les plus populaire sur le site
+
+	select *
+	from tags 
+	Order by count  DESC 
+	LIMIT 3
+
+
+select v.bountyamount, u.Displayname, p.title
+from users u
+join votes v ON u.id=v.userid
+join posts p on u.id=p.owneruserid
+where 
+
+
+select v.bountyamount, p.title
+from votes v
+join posts p on v.postid=p.id
+order by v.bountyamount desc
